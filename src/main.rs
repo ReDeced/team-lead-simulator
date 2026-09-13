@@ -13,7 +13,7 @@ async fn main() {
     let developers = load_developers();
 
     loop {
-        clear_background(DARKPURPLE);
+        clear_background(DARKGRAY);
         for (i, developer) in developers.iter().enumerate() {
             draw_text_ex(format!("{} {} лет {:?} {:?}", developer.name, developer.age, developer.position, developer.grade),
             20.0, 40.0 + 30.0 * (i as f32),
