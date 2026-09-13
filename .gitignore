@@ -1,2 +1,3 @@
 /target
 /deploy/game.wasm
+/game-data/*.mpk
