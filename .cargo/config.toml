@@ -1,0 +1,3 @@
+[alias]
+deploy = ["run", "--bin", "copy-wasm", "--", "wasm32-unknown-unknown", "release"]
+
