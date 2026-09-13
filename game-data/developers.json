@@ -1,0 +1,1202 @@
+[
+  {
+    "name": "Тимур Захаров",
+    "age": 26,
+    "position": "Mobile",
+    "grade": "Junior",
+    "salary": 125000,
+    "speed": 67.9,
+    "quality": 79.6,
+    "burnout_coef": 0.8
+  },
+  {
+    "name": "Нина Петрова",
+    "age": 34,
+    "position": "Frontend",
+    "grade": "Middle",
+    "salary": 245000,
+    "speed": 66.8,
+    "quality": 68.6,
+    "burnout_coef": 0.9
+  },
+  {
+    "name": "Захар Егоров",
+    "age": 26,
+    "position": "Mobile",
+    "grade": "Junior",
+    "salary": 105000,
+    "speed": 80.2,
+    "quality": 82.2,
+    "burnout_coef": 0.99
+  },
+  {
+    "name": "Вадим Александров",
+    "age": 22,
+    "position": "DevOps",
+    "grade": "Junior",
+    "salary": 145000,
+    "speed": 60.7,
+    "quality": 79.5,
+    "burnout_coef": 0.85
+  },
+  {
+    "name": "Фёдор Михайлов",
+    "age": 20,
+    "position": "Mobile",
+    "grade": "Junior",
+    "salary": 130000,
+    "speed": 75.1,
+    "quality": 75.8,
+    "burnout_coef": 1.02
+  },
+  {
+    "name": "Вадим Сергеев",
+    "age": 28,
+    "position": "Sysadmin",
+    "grade": "Middle",
+    "salary": 190000,
+    "speed": 81.8,
+    "quality": 73.2,
+    "burnout_coef": 1.24
+  },
+  {
+    "name": "Элина Фёдорова",
+    "age": 24,
+    "position": "Frontend",
+    "grade": "Junior",
+    "salary": 100000,
+    "speed": 62.7,
+    "quality": 72.5,
+    "burnout_coef": 0.88
+  },
+  {
+    "name": "Михаил Новиков",
+    "age": 25,
+    "position": "AutoQA",
+    "grade": "Junior",
+    "salary": 140000,
+    "speed": 73.1,
+    "quality": 76.7,
+    "burnout_coef": 1.55
+  },
+  {
+    "name": "Даниил Семёнов",
+    "age": 25,
+    "position": "DevOps",
+    "grade": "Middle",
+    "salary": 220000,
+    "speed": 75.7,
+    "quality": 70.4,
+    "burnout_coef": 0.84
+  },
+  {
+    "name": "Александр Калинин",
+    "age": 26,
+    "position": "Frontend",
+    "grade": "Middle",
+    "salary": 295000,
+    "speed": 89.3,
+    "quality": 84.1,
+    "burnout_coef": 1.02
+  },
+  {
+    "name": "Захар Зубков",
+    "age": 36,
+    "position": "DevOps",
+    "grade": "Senior",
+    "salary": 425000,
+    "speed": 89.4,
+    "quality": 95.0,
+    "burnout_coef": 0.45
+  },
+  {
+    "name": "Надежда Александрова",
+    "age": 43,
+    "position": "DevOps",
+    "grade": "Senior",
+    "salary": 380000,
+    "speed": 92.3,
+    "quality": 78.6,
+    "burnout_coef": 0.76
+  },
+  {
+    "name": "Виктория Николаева",
+    "age": 24,
+    "position": "UIUXDesigner",
+    "grade": "Junior",
+    "salary": 110000,
+    "speed": 61.6,
+    "quality": 63.6,
+    "burnout_coef": 1.15
+  },
+  {
+    "name": "Александр Воробьёв",
+    "age": 21,
+    "position": "Backend",
+    "grade": "Junior",
+    "salary": 135000,
+    "speed": 80.8,
+    "quality": 65.8,
+    "burnout_coef": 1.03
+  },
+  {
+    "name": "Олег Михайлов",
+    "age": 34,
+    "position": "Backend",
+    "grade": "Middle",
+    "salary": 195000,
+    "speed": 82.3,
+    "quality": 79.4,
+    "burnout_coef": 1.09
+  },
+  {
+    "name": "Захар Соколов",
+    "age": 45,
+    "position": "Frontend",
+    "grade": "Senior",
+    "salary": 475000,
+    "speed": 72.9,
+    "quality": 81.8,
+    "burnout_coef": 1.18
+  },
+  {
+    "name": "Георгий Андреев",
+    "age": 39,
+    "position": "Backend",
+    "grade": "Senior",
+    "salary": 385000,
+    "speed": 74.2,
+    "quality": 72.7,
+    "burnout_coef": 0.45
+  },
+  {
+    "name": "Виктория Романова",
+    "age": 32,
+    "position": "Frontend",
+    "grade": "Senior",
+    "salary": 560000,
+    "speed": 92.2,
+    "quality": 84.2,
+    "burnout_coef": 0.91
+  },
+  {
+    "name": "Артём Зубков",
+    "age": 25,
+    "position": "UIUXDesigner",
+    "grade": "Middle",
+    "salary": 225000,
+    "speed": 74.9,
+    "quality": 78.8,
+    "burnout_coef": 1.26
+  },
+  {
+    "name": "Майя Орлова",
+    "age": 20,
+    "position": "ManualQA",
+    "grade": "Junior",
+    "salary": 115000,
+    "speed": 69.1,
+    "quality": 67.2,
+    "burnout_coef": 1.71
+  },
+  {
+    "name": "Игорь Попов",
+    "age": 26,
+    "position": "Backend",
+    "grade": "Middle",
+    "salary": 295000,
+    "speed": 69.2,
+    "quality": 73.8,
+    "burnout_coef": 0.82
+  },
+  {
+    "name": "Александр Орлов",
+    "age": 33,
+    "position": "Sysadmin",
+    "grade": "Middle",
+    "salary": 215000,
+    "speed": 89.9,
+    "quality": 78.4,
+    "burnout_coef": 1.33
+  },
+  {
+    "name": "Софья Морозова",
+    "age": 24,
+    "position": "DevOps",
+    "grade": "Middle",
+    "salary": 265000,
+    "speed": 68.5,
+    "quality": 79.2,
+    "burnout_coef": 0.7
+  },
+  {
+    "name": "Иван Яковлев",
+    "age": 34,
+    "position": "AutoQA",
+    "grade": "Senior",
+    "salary": 495000,
+    "speed": 92.7,
+    "quality": 98.4,
+    "burnout_coef": 0.76
+  },
+  {
+    "name": "Никита Андреев",
+    "age": 40,
+    "position": "Frontend",
+    "grade": "Senior",
+    "salary": 515000,
+    "speed": 89.3,
+    "quality": 86.2,
+    "burnout_coef": 1.02
+  },
+  {
+    "name": "Никита Кузнецов",
+    "age": 26,
+    "position": "UIUXDesigner",
+    "grade": "Junior",
+    "salary": 105000,
+    "speed": 62.7,
+    "quality": 69.8,
+    "burnout_coef": 1.59
+  },
+  {
+    "name": "Константин Максимов",
+    "age": 28,
+    "position": "Sysadmin",
+    "grade": "Middle",
+    "salary": 205000,
+    "speed": 70.0,
+    "quality": 76.6,
+    "burnout_coef": 0.6
+  },
+  {
+    "name": "Юрий Попов",
+    "age": 21,
+    "position": "UIUXDesigner",
+    "grade": "Junior",
+    "salary": 100000,
+    "speed": 74.3,
+    "quality": 83.1,
+    "burnout_coef": 1.54
+  },
+  {
+    "name": "Руслан Степанов",
+    "age": 28,
+    "position": "Backend",
+    "grade": "Middle",
+    "salary": 280000,
+    "speed": 81.2,
+    "quality": 91.0,
+    "burnout_coef": 1.26
+  },
+  {
+    "name": "Ярослав Попов",
+    "age": 27,
+    "position": "AutoQA",
+    "grade": "Middle",
+    "salary": 310000,
+    "speed": 71.4,
+    "quality": 81.0,
+    "burnout_coef": 1.34
+  },
+  {
+    "name": "Ульяна Фёдорова",
+    "age": 32,
+    "position": "Sysadmin",
+    "grade": "Middle",
+    "salary": 255000,
+    "speed": 66.4,
+    "quality": 79.9,
+    "burnout_coef": 0.9
+  },
+  {
+    "name": "Евгений Яковлев",
+    "age": 27,
+    "position": "DevOps",
+    "grade": "Middle",
+    "salary": 315000,
+    "speed": 77.7,
+    "quality": 85.7,
+    "burnout_coef": 1.01
+  },
+  {
+    "name": "Ярослав Андреев",
+    "age": 32,
+    "position": "Backend",
+    "grade": "Senior",
+    "salary": 395000,
+    "speed": 87.1,
+    "quality": 81.9,
+    "burnout_coef": 0.58
+  },
+  {
+    "name": "Софья Воробьёва",
+    "age": 32,
+    "position": "Backend",
+    "grade": "Middle",
+    "salary": 260000,
+    "speed": 75.5,
+    "quality": 89.2,
+    "burnout_coef": 0.66
+  },
+  {
+    "name": "Дмитрий Калинин",
+    "age": 47,
+    "position": "Mobile",
+    "grade": "Senior",
+    "salary": 495000,
+    "speed": 89.0,
+    "quality": 82.8,
+    "burnout_coef": 1.1
+  },
+  {
+    "name": "Ярослав Кузнецов",
+    "age": 24,
+    "position": "Backend",
+    "grade": "Junior",
+    "salary": 95000,
+    "speed": 66.0,
+    "quality": 72.0,
+    "burnout_coef": 0.85
+  },
+  {
+    "name": "Константин Дмитриев",
+    "age": 35,
+    "position": "DevOps",
+    "grade": "Middle",
+    "salary": 230000,
+    "speed": 77.4,
+    "quality": 73.7,
+    "burnout_coef": 0.82
+  },
+  {
+    "name": "Инна Ершова",
+    "age": 26,
+    "position": "ManualQA",
+    "grade": "Junior",
+    "salary": 135000,
+    "speed": 65.2,
+    "quality": 66.9,
+    "burnout_coef": 1.61
+  },
+  {
+    "name": "Ярослав Макаров",
+    "age": 25,
+    "position": "AutoQA",
+    "grade": "Junior",
+    "salary": 145000,
+    "speed": 77.1,
+    "quality": 65.4,
+    "burnout_coef": 1.44
+  },
+  {
+    "name": "Михаил Фролов",
+    "age": 35,
+    "position": "Backend",
+    "grade": "Senior",
+    "salary": 375000,
+    "speed": 72.9,
+    "quality": 77.3,
+    "burnout_coef": 1.05
+  },
+  {
+    "name": "Павел Павлов",
+    "age": 34,
+    "position": "DevOps",
+    "grade": "Middle",
+    "salary": 250000,
+    "speed": 83.9,
+    "quality": 87.3,
+    "burnout_coef": 1.28
+  },
+  {
+    "name": "Виктория Макарова",
+    "age": 25,
+    "position": "ManualQA",
+    "grade": "Junior",
+    "salary": 140000,
+    "speed": 73.5,
+    "quality": 70.9,
+    "burnout_coef": 1.21
+  },
+  {
+    "name": "Тихон Попов",
+    "age": 30,
+    "position": "ManualQA",
+    "grade": "Middle",
+    "salary": 195000,
+    "speed": 77.8,
+    "quality": 75.4,
+    "burnout_coef": 0.88
+  },
+  {
+    "name": "Елена Романова",
+    "age": 20,
+    "position": "UIUXDesigner",
+    "grade": "Junior",
+    "salary": 100000,
+    "speed": 67.9,
+    "quality": 73.8,
+    "burnout_coef": 1.46
+  },
+  {
+    "name": "Илья Александров",
+    "age": 20,
+    "position": "Mobile",
+    "grade": "Junior",
+    "salary": 120000,
+    "speed": 65.0,
+    "quality": 82.5,
+    "burnout_coef": 1.55
+  },
+  {
+    "name": "Даниил Лебедев",
+    "age": 40,
+    "position": "DevOps",
+    "grade": "Senior",
+    "salary": 460000,
+    "speed": 74.0,
+    "quality": 80.6,
+    "burnout_coef": 0.81
+  },
+  {
+    "name": "Никита Романов",
+    "age": 38,
+    "position": "AutoQA",
+    "grade": "Senior",
+    "salary": 455000,
+    "speed": 80.4,
+    "quality": 78.1,
+    "burnout_coef": 0.6
+  },
+  {
+    "name": "Анна Зубкова",
+    "age": 25,
+    "position": "AutoQA",
+    "grade": "Junior",
+    "salary": 120000,
+    "speed": 63.1,
+    "quality": 71.8,
+    "burnout_coef": 0.83
+  },
+  {
+    "name": "Андрей Соколов",
+    "age": 25,
+    "position": "DevOps",
+    "grade": "Middle",
+    "salary": 200000,
+    "speed": 89.6,
+    "quality": 87.6,
+    "burnout_coef": 1.38
+  },
+  {
+    "name": "Юрий Сергеев",
+    "age": 36,
+    "position": "Sysadmin",
+    "grade": "Senior",
+    "salary": 570000,
+    "speed": 77.7,
+    "quality": 75.9,
+    "burnout_coef": 0.58
+  },
+  {
+    "name": "Галина Михайлова",
+    "age": 31,
+    "position": "DevOps",
+    "grade": "Middle",
+    "salary": 230000,
+    "speed": 78.3,
+    "quality": 78.8,
+    "burnout_coef": 0.61
+  },
+  {
+    "name": "Алексей Зайцев",
+    "age": 34,
+    "position": "UIUXDesigner",
+    "grade": "Senior",
+    "salary": 355000,
+    "speed": 84.4,
+    "quality": 81.0,
+    "burnout_coef": 1.17
+  },
+  {
+    "name": "Валерия Зайцева",
+    "age": 23,
+    "position": "Mobile",
+    "grade": "Junior",
+    "salary": 135000,
+    "speed": 60.6,
+    "quality": 57.2,
+    "burnout_coef": 1.19
+  },
+  {
+    "name": "Олеся Орлова",
+    "age": 20,
+    "position": "ManualQA",
+    "grade": "Junior",
+    "salary": 125000,
+    "speed": 71.1,
+    "quality": 61.9,
+    "burnout_coef": 1.01
+  },
+  {
+    "name": "Таисия Сорокина",
+    "age": 24,
+    "position": "UIUXDesigner",
+    "grade": "Middle",
+    "salary": 310000,
+    "speed": 74.3,
+    "quality": 80.4,
+    "burnout_coef": 0.81
+  },
+  {
+    "name": "Тихон Егоров",
+    "age": 34,
+    "position": "UIUXDesigner",
+    "grade": "Middle",
+    "salary": 270000,
+    "speed": 84.4,
+    "quality": 83.5,
+    "burnout_coef": 0.76
+  },
+  {
+    "name": "Андрей Гусев",
+    "age": 28,
+    "position": "Mobile",
+    "grade": "Middle",
+    "salary": 215000,
+    "speed": 68.7,
+    "quality": 70.0,
+    "burnout_coef": 1.19
+  },
+  {
+    "name": "Игорь Королёв",
+    "age": 28,
+    "position": "Backend",
+    "grade": "Middle",
+    "salary": 305000,
+    "speed": 84.9,
+    "quality": 68.7,
+    "burnout_coef": 0.67
+  },
+  {
+    "name": "Филипп Морозов",
+    "age": 20,
+    "position": "ManualQA",
+    "grade": "Junior",
+    "salary": 160000,
+    "speed": 82.4,
+    "quality": 73.6,
+    "burnout_coef": 1.68
+  },
+  {
+    "name": "Игорь Орлов",
+    "age": 20,
+    "position": "Backend",
+    "grade": "Junior",
+    "salary": 145000,
+    "speed": 78.2,
+    "quality": 67.8,
+    "burnout_coef": 1.58
+  },
+  {
+    "name": "Михаил Сидоров",
+    "age": 25,
+    "position": "UIUXDesigner",
+    "grade": "Junior",
+    "salary": 105000,
+    "speed": 65.1,
+    "quality": 64.4,
+    "burnout_coef": 1.43
+  },
+  {
+    "name": "Марк Николаев",
+    "age": 25,
+    "position": "ManualQA",
+    "grade": "Middle",
+    "salary": 250000,
+    "speed": 69.0,
+    "quality": 74.5,
+    "burnout_coef": 0.83
+  },
+  {
+    "name": "Ярослав Воробьёв",
+    "age": 26,
+    "position": "ManualQA",
+    "grade": "Middle",
+    "salary": 290000,
+    "speed": 89.7,
+    "quality": 92.2,
+    "burnout_coef": 0.89
+  },
+  {
+    "name": "Марина Орлова",
+    "age": 31,
+    "position": "ManualQA",
+    "grade": "Middle",
+    "salary": 190000,
+    "speed": 69.8,
+    "quality": 80.3,
+    "burnout_coef": 1.17
+  },
+  {
+    "name": "Роман Степанов",
+    "age": 22,
+    "position": "ManualQA",
+    "grade": "Junior",
+    "salary": 120000,
+    "speed": 79.1,
+    "quality": 65.6,
+    "burnout_coef": 1.32
+  },
+  {
+    "name": "Фёдор Максимов",
+    "age": 20,
+    "position": "UIUXDesigner",
+    "grade": "Junior",
+    "salary": 135000,
+    "speed": 64.9,
+    "quality": 76.2,
+    "burnout_coef": 1.11
+  },
+  {
+    "name": "Егор Петров",
+    "age": 48,
+    "position": "DevOps",
+    "grade": "Senior",
+    "salary": 435000,
+    "speed": 76.3,
+    "quality": 77.6,
+    "burnout_coef": 0.59
+  },
+  {
+    "name": "Дмитрий Логинов",
+    "age": 37,
+    "position": "Sysadmin",
+    "grade": "Senior",
+    "salary": 370000,
+    "speed": 87.2,
+    "quality": 92.3,
+    "burnout_coef": 0.97
+  },
+  {
+    "name": "Георгий Воробьёв",
+    "age": 22,
+    "position": "Mobile",
+    "grade": "Junior",
+    "salary": 85000,
+    "speed": 81.1,
+    "quality": 63.1,
+    "burnout_coef": 1.53
+  },
+  {
+    "name": "Вячеслав Смирнов",
+    "age": 20,
+    "position": "Backend",
+    "grade": "Junior",
+    "salary": 145000,
+    "speed": 61.8,
+    "quality": 70.8,
+    "burnout_coef": 1.09
+  },
+  {
+    "name": "Степан Смирнов",
+    "age": 31,
+    "position": "Backend",
+    "grade": "Senior",
+    "salary": 495000,
+    "speed": 84.4,
+    "quality": 81.8,
+    "burnout_coef": 1.18
+  },
+  {
+    "name": "Виктория Калинина",
+    "age": 21,
+    "position": "Frontend",
+    "grade": "Junior",
+    "salary": 150000,
+    "speed": 66.0,
+    "quality": 68.2,
+    "burnout_coef": 1.44
+  },
+  {
+    "name": "Юрий Петров",
+    "age": 24,
+    "position": "Sysadmin",
+    "grade": "Junior",
+    "salary": 100000,
+    "speed": 67.5,
+    "quality": 74.2,
+    "burnout_coef": 0.87
+  },
+  {
+    "name": "Евгений Сорокин",
+    "age": 25,
+    "position": "Mobile",
+    "grade": "Junior",
+    "salary": 150000,
+    "speed": 62.5,
+    "quality": 62.9,
+    "burnout_coef": 1.19
+  },
+  {
+    "name": "Майя Захарова",
+    "age": 39,
+    "position": "Sysadmin",
+    "grade": "Senior",
+    "salary": 540000,
+    "speed": 89.1,
+    "quality": 90.8,
+    "burnout_coef": 0.8
+  },
+  {
+    "name": "Ирина Фёдорова",
+    "age": 25,
+    "position": "Sysadmin",
+    "grade": "Junior",
+    "salary": 120000,
+    "speed": 66.5,
+    "quality": 62.8,
+    "burnout_coef": 1.55
+  },
+  {
+    "name": "Владимир Петров",
+    "age": 24,
+    "position": "AutoQA",
+    "grade": "Middle",
+    "salary": 230000,
+    "speed": 89.0,
+    "quality": 85.4,
+    "burnout_coef": 0.85
+  },
+  {
+    "name": "Владимир Сидоров",
+    "age": 30,
+    "position": "Sysadmin",
+    "grade": "Senior",
+    "salary": 440000,
+    "speed": 94.1,
+    "quality": 81.5,
+    "burnout_coef": 0.69
+  },
+  {
+    "name": "Виталий Жуков",
+    "age": 26,
+    "position": "ManualQA",
+    "grade": "Junior",
+    "salary": 90000,
+    "speed": 70.1,
+    "quality": 68.4,
+    "burnout_coef": 1.32
+  },
+  {
+    "name": "Ярослав Яковлев",
+    "age": 23,
+    "position": "Mobile",
+    "grade": "Junior",
+    "salary": 85000,
+    "speed": 75.4,
+    "quality": 63.6,
+    "burnout_coef": 1.5
+  },
+  {
+    "name": "Андрей Зайцев",
+    "age": 44,
+    "position": "AutoQA",
+    "grade": "Senior",
+    "salary": 470000,
+    "speed": 93.3,
+    "quality": 96.9,
+    "burnout_coef": 0.82
+  },
+  {
+    "name": "Максим Григорьев",
+    "age": 29,
+    "position": "Sysadmin",
+    "grade": "Middle",
+    "salary": 265000,
+    "speed": 69.6,
+    "quality": 70.6,
+    "burnout_coef": 0.6
+  },
+  {
+    "name": "Фёдор Новиков",
+    "age": 33,
+    "position": "DevOps",
+    "grade": "Senior",
+    "salary": 455000,
+    "speed": 76.3,
+    "quality": 73.7,
+    "burnout_coef": 0.77
+  },
+  {
+    "name": "Лев Ильин",
+    "age": 21,
+    "position": "AutoQA",
+    "grade": "Junior",
+    "salary": 130000,
+    "speed": 79.8,
+    "quality": 82.2,
+    "burnout_coef": 0.87
+  },
+  {
+    "name": "Роман Белов",
+    "age": 32,
+    "position": "Mobile",
+    "grade": "Senior",
+    "salary": 455000,
+    "speed": 70.3,
+    "quality": 87.6,
+    "burnout_coef": 0.6
+  },
+  {
+    "name": "Тарас Сергеев",
+    "age": 26,
+    "position": "Sysadmin",
+    "grade": "Middle",
+    "salary": 315000,
+    "speed": 80.7,
+    "quality": 84.4,
+    "burnout_coef": 1.25
+  },
+  {
+    "name": "Николай Поляков",
+    "age": 27,
+    "position": "AutoQA",
+    "grade": "Middle",
+    "salary": 310000,
+    "speed": 74.9,
+    "quality": 69.2,
+    "burnout_coef": 0.73
+  },
+  {
+    "name": "Игорь Морозов",
+    "age": 35,
+    "position": "ManualQA",
+    "grade": "Middle",
+    "salary": 220000,
+    "speed": 65.2,
+    "quality": 86.3,
+    "burnout_coef": 0.99
+  },
+  {
+    "name": "Евгений Степанов",
+    "age": 34,
+    "position": "ManualQA",
+    "grade": "Middle",
+    "salary": 195000,
+    "speed": 65.1,
+    "quality": 81.9,
+    "burnout_coef": 1.48
+  },
+  {
+    "name": "Фёдор Петров",
+    "age": 23,
+    "position": "DevOps",
+    "grade": "Junior",
+    "salary": 125000,
+    "speed": 68.4,
+    "quality": 70.2,
+    "burnout_coef": 1.36
+  },
+  {
+    "name": "Илья Васильев",
+    "age": 42,
+    "position": "AutoQA",
+    "grade": "Senior",
+    "salary": 420000,
+    "speed": 71.8,
+    "quality": 82.5,
+    "burnout_coef": 0.87
+  },
+  {
+    "name": "Фёдор Васильев",
+    "age": 27,
+    "position": "Backend",
+    "grade": "Middle",
+    "salary": 310000,
+    "speed": 78.7,
+    "quality": 67.3,
+    "burnout_coef": 0.65
+  },
+  {
+    "name": "Александр Фролов",
+    "age": 25,
+    "position": "AutoQA",
+    "grade": "Junior",
+    "salary": 110000,
+    "speed": 67.5,
+    "quality": 70.0,
+    "burnout_coef": 1.57
+  },
+  {
+    "name": "Наталья Макарова",
+    "age": 28,
+    "position": "Mobile",
+    "grade": "Middle",
+    "salary": 205000,
+    "speed": 88.1,
+    "quality": 86.5,
+    "burnout_coef": 1.28
+  },
+  {
+    "name": "Вера Дорофеева",
+    "age": 28,
+    "position": "UIUXDesigner",
+    "grade": "Middle",
+    "salary": 255000,
+    "speed": 78.5,
+    "quality": 85.0,
+    "burnout_coef": 1.36
+  },
+  {
+    "name": "Милана Макарова",
+    "age": 40,
+    "position": "Frontend",
+    "grade": "Senior",
+    "salary": 405000,
+    "speed": 72.0,
+    "quality": 72.0,
+    "burnout_coef": 0.78
+  },
+  {
+    "name": "Софья Соловьёва",
+    "age": 25,
+    "position": "ManualQA",
+    "grade": "Junior",
+    "salary": 120000,
+    "speed": 61.3,
+    "quality": 58.8,
+    "burnout_coef": 1.26
+  },
+  {
+    "name": "Кирилл Смирнов",
+    "age": 33,
+    "position": "DevOps",
+    "grade": "Middle",
+    "salary": 315000,
+    "speed": 87.8,
+    "quality": 76.4,
+    "burnout_coef": 0.97
+  },
+  {
+    "name": "Станислав Дорофеев",
+    "age": 20,
+    "position": "Frontend",
+    "grade": "Junior",
+    "salary": 105000,
+    "speed": 66.6,
+    "quality": 79.0,
+    "burnout_coef": 0.93
+  },
+  {
+    "name": "Инна Зайцева",
+    "age": 30,
+    "position": "Frontend",
+    "grade": "Middle",
+    "salary": 195000,
+    "speed": 75.0,
+    "quality": 74.9,
+    "burnout_coef": 0.99
+  },
+  {
+    "name": "Дмитрий Ильин",
+    "age": 27,
+    "position": "Sysadmin",
+    "grade": "Middle",
+    "salary": 195000,
+    "speed": 67.2,
+    "quality": 69.9,
+    "burnout_coef": 1.09
+  },
+  {
+    "name": "Инна Волкова",
+    "age": 25,
+    "position": "Sysadmin",
+    "grade": "Junior",
+    "salary": 135000,
+    "speed": 72.9,
+    "quality": 65.7,
+    "burnout_coef": 1.16
+  },
+  {
+    "name": "Михаил Виноградов",
+    "age": 32,
+    "position": "Frontend",
+    "grade": "Senior",
+    "salary": 535000,
+    "speed": 83.6,
+    "quality": 72.4,
+    "burnout_coef": 0.82
+  },
+  {
+    "name": "Элина Павлова",
+    "age": 25,
+    "position": "Mobile",
+    "grade": "Middle",
+    "salary": 205000,
+    "speed": 74.7,
+    "quality": 87.8,
+    "burnout_coef": 1.34
+  },
+  {
+    "name": "Виктор Поляков",
+    "age": 24,
+    "position": "UIUXDesigner",
+    "grade": "Junior",
+    "salary": 125000,
+    "speed": 67.7,
+    "quality": 82.3,
+    "burnout_coef": 1.2
+  },
+  {
+    "name": "Олег Григорьев",
+    "age": 26,
+    "position": "Backend",
+    "grade": "Middle",
+    "salary": 245000,
+    "speed": 79.6,
+    "quality": 77.2,
+    "burnout_coef": 0.84
+  },
+  {
+    "name": "Яна Зайцева",
+    "age": 34,
+    "position": "Frontend",
+    "grade": "Senior",
+    "salary": 355000,
+    "speed": 88.6,
+    "quality": 74.8,
+    "burnout_coef": 0.53
+  },
+  {
+    "name": "Виталий Новиков",
+    "age": 21,
+    "position": "Mobile",
+    "grade": "Junior",
+    "salary": 130000,
+    "speed": 66.2,
+    "quality": 64.8,
+    "burnout_coef": 1.21
+  },
+  {
+    "name": "Мария Зубкова",
+    "age": 29,
+    "position": "Frontend",
+    "grade": "Middle",
+    "salary": 295000,
+    "speed": 72.0,
+    "quality": 70.9,
+    "burnout_coef": 1.15
+  },
+  {
+    "name": "Владимир Воробьёв",
+    "age": 24,
+    "position": "Mobile",
+    "grade": "Junior",
+    "salary": 150000,
+    "speed": 66.6,
+    "quality": 69.7,
+    "burnout_coef": 0.86
+  },
+  {
+    "name": "Денис Дорофеев",
+    "age": 21,
+    "position": "UIUXDesigner",
+    "grade": "Junior",
+    "salary": 100000,
+    "speed": 66.5,
+    "quality": 69.3,
+    "burnout_coef": 1.1
+  },
+  {
+    "name": "Нина Иванова",
+    "age": 25,
+    "position": "Frontend",
+    "grade": "Middle",
+    "salary": 210000,
+    "speed": 77.0,
+    "quality": 81.7,
+    "burnout_coef": 1.24
+  },
+  {
+    "name": "Георгий Сидоров",
+    "age": 31,
+    "position": "UIUXDesigner",
+    "grade": "Middle",
+    "salary": 280000,
+    "speed": 67.6,
+    "quality": 75.4,
+    "burnout_coef": 1.41
+  },
+  {
+    "name": "Станислав Александров",
+    "age": 24,
+    "position": "AutoQA",
+    "grade": "Junior",
+    "salary": 105000,
+    "speed": 62.3,
+    "quality": 63.5,
+    "burnout_coef": 1.01
+  },
+  {
+    "name": "Татьяна Зайцева",
+    "age": 30,
+    "position": "Sysadmin",
+    "grade": "Senior",
+    "salary": 370000,
+    "speed": 94.7,
+    "quality": 98.4,
+    "burnout_coef": 1.07
+  },
+  {
+    "name": "Таисия Захарова",
+    "age": 40,
+    "position": "AutoQA",
+    "grade": "Senior",
+    "salary": 545000,
+    "speed": 80.3,
+    "quality": 84.2,
+    "burnout_coef": 0.7
+  },
+  {
+    "name": "Софья Киселёва",
+    "age": 22,
+    "position": "Frontend",
+    "grade": "Junior",
+    "salary": 100000,
+    "speed": 80.7,
+    "quality": 85.6,
+    "burnout_coef": 1.33
+  },
+  {
+    "name": "Илья Смирнов",
+    "age": 20,
+    "position": "UIUXDesigner",
+    "grade": "Junior",
+    "salary": 130000,
+    "speed": 64.7,
+    "quality": 82.2,
+    "burnout_coef": 1.42
+  },
+  {
+    "name": "Захар Белов",
+    "age": 22,
+    "position": "ManualQA",
+    "grade": "Junior",
+    "salary": 135000,
+    "speed": 83.9,
+    "quality": 85.6,
+    "burnout_coef": 1.26
+  },
+  {
+    "name": "Григорий Логинов",
+    "age": 25,
+    "position": "AutoQA",
+    "grade": "Junior",
+    "salary": 140000,
+    "speed": 81.8,
+    "quality": 61.9,
+    "burnout_coef": 0.83
+  }
+]
