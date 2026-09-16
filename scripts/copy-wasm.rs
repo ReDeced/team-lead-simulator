@@ -20,7 +20,7 @@ fn main() {
 
     println!("Сборка готова! Запуск сервера...");
     
-    let status = Command::new("basic-http-server").args(&["-p", "6767", "deploy/"])
+    let status = Command::new("basic-http-server").args(&["-a", "0.0.0.0:6767", "deploy/"])
         .status().expect("Ошибка запуса basic-http-server");
     if !status.success() {
         std::process::exit(2);
