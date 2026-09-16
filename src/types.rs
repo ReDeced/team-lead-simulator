@@ -102,11 +102,11 @@ pub enum Difficulty {
 }
 
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Debug, Clone)]
 pub struct Game {
     pub difficulty: Difficulty,
     pub project: GameProject,
-    pub employees: Vec<Employee>
+    is_started: bool
 }
 
 
@@ -115,11 +115,17 @@ impl Game {
         Self {
             difficulty,
             project: GameProject::new(),
-            employees: load_employees()
+            is_started: false
         }
     }
-
+    
+    pub fn start_game(&mut self) {
+        self.is_started = true;
+    }
+    
     pub fn next_day(&mut self) {
+        if !self.is_started { return }
+
         let project = &mut self.project;
         
         let mut employees = std::mem::take(&mut project.employees);
