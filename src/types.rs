@@ -27,7 +27,7 @@ pub struct GameProject {
     pub deploy_progress: f32,
     hidden_bugs: Vec<Bug>,
     pub known_bugs: Vec<Bug>,
-    pub developers: Vec<ManagedDeveloper>,
+    pub employees: Vec<ManagedEmployee>,
 }
 
 
@@ -41,7 +41,7 @@ impl GameProject {
             deploy_progress: 0.0,
             hidden_bugs: Vec::new(),
             known_bugs: Vec::new(),
-            developers: Vec::new()
+            employees: Vec::new()
         }
     }
 }
@@ -56,7 +56,7 @@ pub enum Grade {
 
 
 #[derive(PartialEq, Serialize, Deserialize, Debug, Clone, Copy, strum::EnumIter)]
-pub enum DevPosition {
+pub enum Position {
     Backend,
     Frontend,
     DevOps,
@@ -69,10 +69,10 @@ pub enum DevPosition {
 
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Developer {
+pub struct Employee {
     pub name: String,
     pub age: u16,
-    pub position: DevPosition,
+    pub position: Position,
     pub grade: Grade,
     pub salary: f32,
     speed: f32,
@@ -82,8 +82,8 @@ pub struct Developer {
 
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct ManagedDeveloper {
-    pub base_developer: Developer,
+pub struct ManagedEmployee {
+    pub base_employee: Employee,
     pub grade: Grade,
     pub education_progress: f32,
     burnout: f32,
@@ -106,7 +106,7 @@ pub enum Difficulty {
 pub struct Game {
     pub difficulty: Difficulty,
     pub project: GameProject,
-    pub developers: Vec<Developer>
+    pub employees: Vec<Employee>
 }
 
 
@@ -115,115 +115,115 @@ impl Game {
         Self {
             difficulty,
             project: GameProject::new(),
-            developers: load_developers()
+            employees: load_employees()
         }
     }
 
     pub fn next_day(&mut self) {
         let project = &mut self.project;
         
-        let mut developers = std::mem::take(&mut project.developers);
+        let mut employees = std::mem::take(&mut project.employees);
 
-        for developer in developers.iter_mut() {
-            developer.work_progress += developer.base_developer.speed;
-            developer.burnout += developer.base_developer.burnout_coef;
+        for employee in employees.iter_mut() {
+            employee.work_progress += employee.base_employee.speed;
+            employee.burnout += employee.base_employee.burnout_coef;
             
-            let work_done = developer.work_progress.trunc();
+            let work_done = employee.work_progress.trunc();
 
-            match developer.base_developer.position {
-                DevPosition::Backend => {
-                    if developer.current_bug.is_none() {
+            match employee.base_employee.position {
+                Position::Backend => {
+                    if employee.current_bug.is_none() {
                         let bug_index = project.known_bugs.iter()
                             .position(|bug| bug.bug_type == BugType::Backend && bug.is_available);
                         if let Some(index) = bug_index {
                             project.known_bugs[index].is_available = false;
-                            developer.current_bug = Some(index);
+                            employee.current_bug = Some(index);
                         } else {
                             project.backend_progress += work_done;
                         }
                     } else {
-                        if let Some(bug_index) = developer.current_bug {
+                        if let Some(bug_index) = employee.current_bug {
                             let bug = &mut project.known_bugs[bug_index];
                             bug.complexity -= work_done;
 
                             if bug.complexity <= 0.0 {
-                                developer.current_bug = None;
+                                employee.current_bug = None;
                                 project.known_bugs.remove(bug_index);
                             }
                         }
                     }
                 }
-                DevPosition::Frontend => {
-                    if developer.current_bug.is_none() {
+                Position::Frontend => {
+                    if employee.current_bug.is_none() {
                         let bug_index = project.known_bugs.iter()
                             .position(|bug| bug.bug_type == BugType::Frontend && bug.is_available);
                         if let Some(index) = bug_index {
                             project.known_bugs[index].is_available = false;
-                            developer.current_bug = Some(index);
+                            employee.current_bug = Some(index);
                         } else {
                             project.frontend_progress += work_done;
                         }
                     } else {
-                        if let Some(bug_index) = developer.current_bug {
+                        if let Some(bug_index) = employee.current_bug {
                             let bug = &mut project.known_bugs[bug_index];
                             bug.complexity -= work_done;
 
                             if bug.complexity <= 0.0 {
-                                developer.current_bug = None;
+                                employee.current_bug = None;
                                 project.known_bugs.remove(bug_index);
                             }
                         }
                     }
                 }
-                DevPosition::Mobile => {
-                    if developer.current_bug.is_none() {
+                Position::Mobile => {
+                    if employee.current_bug.is_none() {
                         let bug_index = project.known_bugs.iter()
                             .position(|bug| bug.bug_type == BugType::Mobile && bug.is_available);
                         if let Some(index) = bug_index {
                             project.known_bugs[index].is_available = false;
-                            developer.current_bug = Some(index);
+                            employee.current_bug = Some(index);
                         } else {
                             project.mobile_progress += work_done;
                         }
                     } else {
-                        if let Some(bug_index) = developer.current_bug {
+                        if let Some(bug_index) = employee.current_bug {
                             let bug = &mut project.known_bugs[bug_index];
                             bug.complexity -= work_done;
 
                             if bug.complexity <= 0.0 {
-                                developer.current_bug = None;
+                                employee.current_bug = None;
                                 project.known_bugs.remove(bug_index);
                             }
                         }
                     }
                 }
-                DevPosition::DevOps | DevPosition::Sysadmin => {
-                    if developer.current_bug.is_none() {
+                Position::DevOps | Position::Sysadmin => {
+                    if employee.current_bug.is_none() {
                         let bug_index = project.known_bugs.iter()
                             .position(|bug| bug.bug_type == BugType::Server && bug.is_available);
                         if let Some(index) = bug_index {
                             project.known_bugs[index].is_available = false;
-                            developer.current_bug = Some(index);
+                            employee.current_bug = Some(index);
                         } else {
                             project.deploy_progress += work_done;
                         }
                     } else {
-                        if let Some(bug_index) = developer.current_bug {
+                        if let Some(bug_index) = employee.current_bug {
                             let bug = &mut project.known_bugs[bug_index];
                             bug.complexity -= work_done;
 
                             if bug.complexity <= 0.0 {
-                                developer.current_bug = None;
+                                employee.current_bug = None;
                                 project.known_bugs.remove(bug_index);
                             }
                         }
                     }
 
                 }
-                DevPosition::UIUXDesigner => {
+                Position::UIUXDesigner => {
                     project.design_progress += work_done;
                 }
-                DevPosition::AutoQA | DevPosition::ManualQA => {
+                Position::AutoQA | Position::ManualQA => {
                     let bugs_to_reveal = (work_done as usize)
                         .min(project.hidden_bugs.len());
                     for _ in 0..bugs_to_reveal {
@@ -233,18 +233,18 @@ impl Game {
                     }
                 }
             }
-            developer.work_progress -= work_done;
+            employee.work_progress -= work_done;
         }
 
-        project.developers = developers;
+        project.employees = employees;
     }
 }
 
 
-pub fn load_developers() -> Vec<Developer> {
-    const BYNARY_DATA: &[u8] = include_bytes!("../game-data/developers.mpk");
-    let developers: Vec<Developer> = rmp_serde::from_slice(BYNARY_DATA)
-        .expect("Не удалось распарсить developers.mpk");
+pub fn load_employees() -> Vec<Employee> {
+    const BYNARY_DATA: &[u8] = include_bytes!("../game-data/employees.mpk");
+    let employees: Vec<Employee> = rmp_serde::from_slice(BYNARY_DATA)
+        .expect("Не удалось распарсить employees.mpk");
 
-    developers
+    employees
 }
