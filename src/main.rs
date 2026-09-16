@@ -10,9 +10,12 @@ use crate::types::{DevPosition, Developer, load_developers};
 async fn main() {
     const FONT_BYTES: &[u8] = include_bytes!("../assets/verdana-font.ttf");
     let font = load_ttf_font_from_bytes(FONT_BYTES).expect("Не удалось загрузить шрифт");
+    
+    let time_seed = (macroquad::time::get_time() * 1000000.0) as u64; 
+    macroquad::rand::srand(time_seed);
 
     let developers = load_developers();
-    
+
     let mut available_developers: Vec<Developer> = Vec::new();
 
     for position in DevPosition::iter() {
@@ -46,9 +49,6 @@ async fn main() {
             let x = 20.0;
             let y = 20.0 + (h + 20.0) * i as f32;
             
-            draw_rectangle(x, y, w, h, BLACK);
-            draw_rectangle_lines(x, y, w, h, 5.0, WHITE);
-
             if mouse_pos.0 >= x && mouse_pos.0 <= x + w && mouse_pos.1 >= y && mouse_pos.1 <= y + h {
                 let menu_text_dimension = measure_text(format!("{}, {} лет", developer.name, developer.age),
                 Some(&font), font_size, 1.0);
@@ -63,6 +63,9 @@ async fn main() {
                 draw_text_ex(format!("{}, {} лет", developer.name, developer.age),
                 menu_x + indent, menu_y + menu_h / 2.0,
                 TextParams { font: Some(&font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: WHITE });
+            } else {
+                draw_rectangle(x, y, w, h, BLACK);
+                draw_rectangle_lines(x, y, w, h, 5.0, WHITE);
             }
 
             draw_text_ex(format!("{:?} {:?}", developer.grade, developer.position),
