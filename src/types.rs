@@ -18,6 +18,80 @@ pub struct Bug {
 }
 
 
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct GameProject {
+    pub design_progress: f32,
+    pub backend_progress: f32,
+    pub frontend_progress: f32,
+    pub mobile_progress: f32,
+    pub deploy_progress: f32,
+    hidden_bugs: Vec<Bug>,
+    pub known_bugs: Vec<Bug>,
+    pub developers: Vec<ManagedDeveloper>,
+}
+
+
+impl GameProject {
+    pub fn new() -> Self {
+        Self {
+            design_progress: 0.0,
+            backend_progress: 0.0,
+            frontend_progress: 0.0,
+            mobile_progress: 0.0,
+            deploy_progress: 0.0,
+            hidden_bugs: Vec::new(),
+            known_bugs: Vec::new(),
+            developers: Vec::new()
+        }
+    }
+}
+
+
+#[derive(Serialize, Deserialize, Debug, Clone, Copy)]
+pub enum Grade {
+    Junior,
+    Middle,
+    Senior
+}
+
+
+#[derive(PartialEq, Serialize, Deserialize, Debug, Clone, Copy, strum::EnumIter)]
+pub enum DevPosition {
+    Backend,
+    Frontend,
+    DevOps,
+    Sysadmin,
+    Mobile,
+    AutoQA,
+    ManualQA,
+    UIUXDesigner
+}
+
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Developer {
+    pub name: String,
+    pub age: u16,
+    pub position: DevPosition,
+    pub grade: Grade,
+    pub salary: f32,
+    speed: f32,
+    quality: f32,
+    burnout_coef: f32
+}
+
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct ManagedDeveloper {
+    pub base_developer: Developer,
+    pub grade: Grade,
+    pub education_progress: f32,
+    burnout: f32,
+    work_progress: f32,
+    pub current_bug: Option<usize>
+}
+
+
 #[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 pub enum Difficulty {
     Tutorial,
@@ -164,80 +238,6 @@ impl Game {
 
         project.developers = developers;
     }
-}
-
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct GameProject {
-    pub design_progress: f32,
-    pub backend_progress: f32,
-    pub frontend_progress: f32,
-    pub mobile_progress: f32,
-    pub deploy_progress: f32,
-    hidden_bugs: Vec<Bug>,
-    pub known_bugs: Vec<Bug>,
-    pub developers: Vec<ManagedDeveloper>,
-}
-
-
-impl GameProject {
-    pub fn new() -> Self {
-        Self {
-            design_progress: 0.0,
-            backend_progress: 0.0,
-            frontend_progress: 0.0,
-            mobile_progress: 0.0,
-            deploy_progress: 0.0,
-            hidden_bugs: Vec::new(),
-            known_bugs: Vec::new(),
-            developers: Vec::new()
-        }
-    }
-}
-
-
-#[derive(Serialize, Deserialize, Debug, Clone, Copy)]
-pub enum Grade {
-    Junior,
-    Middle,
-    Senior
-}
-
-
-#[derive(PartialEq, Serialize, Deserialize, Debug, Clone, Copy, strum::EnumIter)]
-pub enum DevPosition {
-    Backend,
-    Frontend,
-    DevOps,
-    Sysadmin,
-    Mobile,
-    AutoQA,
-    ManualQA,
-    UIUXDesigner
-}
-
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Developer {
-    pub name: String,
-    pub age: u16,
-    pub position: DevPosition,
-    pub grade: Grade,
-    pub salary: f32,
-    speed: f32,
-    quality: f32,
-    burnout_coef: f32
-}
-
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct ManagedDeveloper {
-    pub base_developer: Developer,
-    pub grade: Grade,
-    pub education_progress: f32,
-    burnout: f32,
-    work_progress: f32,
-    pub current_bug: Option<usize>
 }
 
 
