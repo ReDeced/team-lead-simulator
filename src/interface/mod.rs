@@ -1,3 +1,3 @@
-pub mod employees_rotation;
+pub mod employees_rotation_menu;
 
 
