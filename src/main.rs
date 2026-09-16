@@ -3,7 +3,7 @@ use macroquad::{prelude::*};
 mod types;
 mod interface;
 
-use crate::{interface::employees_rotation::EmployeesRotationMenu, types::{Difficulty, Game}};
+use crate::{interface::employees_rotation_menu::EmployeesRotationMenu, types::{Difficulty, Game}};
 
 
 #[macroquad::main("cocal")]
