@@ -18,5 +18,11 @@ fn main() {
 
     fs::copy(source, target).expect("Ошибка копирования .wasm файла");
 
-    println!("Сборка готова");
+    println!("Сборка готова! Запуск сервера...");
+    
+    let status = Command::new("basic-http-server").args(&["-p", "6767", "deploy/"])
+        .status().expect("Ошибка запуса basic-http-server");
+    if !status.success() {
+        std::process::exit(2);
+    }
 }
