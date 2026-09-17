@@ -63,7 +63,7 @@ impl DifficultyChooseMenu {
             draw_rectangle(x, y, w, h, fill_color);
             draw_rectangle_lines(x, y, w, h, 5.0, WHITE);
 
-            draw_text_ex(difficulty.to_string(), x + (w - text_surface.width) / 2.0, y + (h - text_surface.height) / 2.0,
+            draw_text_ex(difficulty.to_string(), x + (w - text_surface.width) / 2.0, y + (h + text_surface.height) / 2.0,
             TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: text_color });
         }
         None
