@@ -54,7 +54,7 @@ impl GameStartMenu {
             }
         }
         else if self.state == GameStartMenuState::ChosingEmployees {
-            let result = self.employees_rotation_menu.menu(font, mouse_pos);
+            let result = self.employees_rotation_menu.draw(font);
             if let Some(chosen_employees) = result {
                 self.chosen_employees = chosen_employees;
             }
