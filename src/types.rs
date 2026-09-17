@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use strum::EnumIter;
+use strum::{EnumCount, EnumIter};
 
 
 #[derive(Serialize, PartialEq, Deserialize, Debug, Clone, Copy)]
@@ -93,7 +93,7 @@ pub struct ManagedEmployee {
 }
 
 
-#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, PartialOrd, EnumIter)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, PartialOrd, EnumIter, EnumCount)]
 pub enum Difficulty {
     Tutorial,
     Easy,
