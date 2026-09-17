@@ -92,7 +92,7 @@ pub struct ManagedEmployee {
 }
 
 
-#[derive(Serialize, Deserialize, Debug, Clone, Copy)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, PartialOrd)]
 pub enum Difficulty {
     Tutorial,
     Easy,
