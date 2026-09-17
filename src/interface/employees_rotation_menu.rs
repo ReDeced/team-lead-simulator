@@ -1,4 +1,4 @@
-use macroquad::{color::*, math::Vec2, rand::ChooseRandom, shapes::{draw_rectangle, draw_rectangle_lines}, text::*};
+use macroquad::{color::*, input::mouse_position, math::Vec2, rand::ChooseRandom, shapes::{draw_rectangle, draw_rectangle_lines}, text::*};
 use strum::IntoEnumIterator;
 
 use crate::types::{Employee, Position, load_employees};
@@ -31,7 +31,10 @@ pub struct EmployeesRotationMenu {
     size: Vec2,
 
     employees: Vec<Employee>,
-    available_employees: Vec<Employee>
+    available_employees: Vec<Employee>,
+    
+    // TODO: сделать, чтобы карточка сотрудника закрывалась, если выйти за её пределы
+    // opened_employee_card_index: usize
 }
 
 
@@ -46,7 +49,7 @@ impl EmployeesRotationMenu {
         self.available_employees = update_available_employees(&self.employees);
     }
 
-    pub fn menu(&self, font: &Font, mouse_pos: (f32, f32)) -> Option<Vec<Employee>> {
+    pub fn draw(&self, font: &Font) -> Option<Vec<Employee>> {
         draw_rectangle(self.pos.x, self.pos.y, self.size.x, self.size.y, BLACK);
         draw_rectangle_lines(self.pos.x, self.pos.y, self.size.x, self.size.y, 5.0, BLACK);
 
@@ -56,6 +59,8 @@ impl EmployeesRotationMenu {
             let text_dimension = measure_text(format!("{:?} {:?}", employee.grade, employee.position),
             Some(font), font_size, 1.0);
             
+            let mouse_pos = mouse_position();
+
             let indent = 10.0;
     
             let w = text_dimension.width + indent * 2.0;
@@ -63,6 +68,7 @@ impl EmployeesRotationMenu {
             let x = self.pos.x + indent;
             let y = self.pos.y + indent + (h + indent * 2.0) * i as f32;
             
+            // TODO: строка 35
             if mouse_pos.0 >= x && mouse_pos.0 <= x + w && mouse_pos.1 >= y && mouse_pos.1 <= y + h {
                 let menu_text_dimension = measure_text(format!("{}, {} лет", employee.name, employee.age),
                 Some(font), font_size, 1.0);
@@ -77,6 +83,9 @@ impl EmployeesRotationMenu {
                 draw_text_ex(format!("{}, {} лет", employee.name, employee.age),
                 menu_x + indent, menu_y + menu_h / 2.0,
                 TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: WHITE });
+                
+                // TODO: при нажатии добавить в список выбранных сотрудников
+
             } else {
                 draw_rectangle(x, y, w, h, BLACK);
                 draw_rectangle_lines(x, y, w, h, 5.0, WHITE);
@@ -85,6 +94,8 @@ impl EmployeesRotationMenu {
             draw_text_ex(format!("{:?} {:?}", employee.grade, employee.position),
             x + indent, y + h / 2.0 + indent,
             TextParams { font: Some(&font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: WHITE });
+
+            // TODO: сделать кнопку окончания выбора
         }
         None
     }
