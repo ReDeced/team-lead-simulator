@@ -25,9 +25,7 @@ async fn main() {
     loop {
         clear_background(DARKGRAY);
        
-        let mouse_pos = mouse_position();
-
-        let chosen_employee = employees_rotation_menu.menu(&font, mouse_pos);
+        let chosen_employee = employees_rotation_menu.draw(&font);
 
         if chosen_employee.is_some() {
             
