@@ -26,9 +26,9 @@ pub struct GameStartMenu {
 
 impl GameStartMenu {
     pub fn new(pos: Vec2, size: Vec2, max_difficulty: Difficulty) -> Self {
-        let employees_rotation_menu = EmployeesRotationMenu::new(pos + pos / 5.0, size / 5.0 * 3.0);
+        let employees_rotation_menu = EmployeesRotationMenu::new(pos + size / 5.0, size / 5.0 * 3.0);
         let difficulty_chose_menu = DifficultyChooseMenu::new(
-            pos + pos / 5.0, size / 5.0 * 3.0, max_difficulty);
+            pos + size / 5.0, size / 5.0 * 3.0, max_difficulty);
         Self { pos, size, state: GameStartMenuState::None, chosen_employees: Vec::new(),
             chosen_difficulty: Difficulty::Tutorial, employees_rotation_menu, difficulty_chose_menu }
     }
@@ -56,7 +56,7 @@ impl GameStartMenu {
 
         let button_2 = Rect {
             x: x + w / 5.0,
-            y: y + w / 5.0 * 3.0,
+            y: y + h / 5.0 * 3.0,
             w: w /5.0 * 3.0,
             h: h / 5.0
         };
@@ -74,25 +74,23 @@ impl GameStartMenu {
         draw_rectangle(button_2.x, button_2.y, button_2.w, button_2.h, BLACK);
         draw_rectangle_lines(button_2.x, button_2.y, button_2.w, button_2.h, 5.0, WHITE);
         
-        draw_text_ex(self.chosen_difficulty.to_string(),
+        draw_text_ex("Выбрать начальную команду",
         button_2.x + (button_2.w - text_surface_2.width) / 2.0,
         button_2.y + button_2.h / 2.0,
         TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: WHITE }
         );
         
-        if button_1.contains(Vec2::new(mouse_pos.0, mouse_pos.1)) {
-            if is_mouse_button_pressed(MouseButton::Left) {
-                self.state = GameStartMenuState::ChosingDifficulty;
-            }
-        } 
-        else if button_2.contains(Vec2::new(mouse_pos.0, mouse_pos.1)) {
-            if is_mouse_button_pressed(MouseButton::Left) {
-                self.state = GameStartMenuState::ChosingEmployees;
-            }
-        }
-
         if self.state == GameStartMenuState::None {
-            // TODO: Сделать меню с двумя кнопками, меняющими self.state
+            if button_1.contains(Vec2::new(mouse_pos.0, mouse_pos.1)) {
+                if is_mouse_button_pressed(MouseButton::Left) {
+                    self.state = GameStartMenuState::ChosingDifficulty;
+                }
+            } 
+            else if button_2.contains(Vec2::new(mouse_pos.0, mouse_pos.1)) {
+                if is_mouse_button_pressed(MouseButton::Left) {
+                    self.state = GameStartMenuState::ChosingEmployees;
+                }
+            }
         }
         else if self.state == GameStartMenuState::ChosingDifficulty {
             let result = self.difficulty_chose_menu.draw(font);
