@@ -1,4 +1,4 @@
-use macroquad::{color::*, rand::ChooseRandom, shapes::{draw_rectangle, draw_rectangle_lines}, text::*};
+use macroquad::{color::*, math::Vec2, rand::ChooseRandom, shapes::{draw_rectangle, draw_rectangle_lines}, text::*};
 use strum::IntoEnumIterator;
 
 use crate::types::{Employee, Position, load_employees};
@@ -27,23 +27,29 @@ fn update_available_employees(employees: &Vec<Employee>) -> Vec<Employee> {
 
 #[derive(Debug, Clone)]
 pub struct EmployeesRotationMenu {
+    pos: Vec2,
+    size: Vec2,
+
     employees: Vec<Employee>,
     available_employees: Vec<Employee>
 }
 
 
 impl EmployeesRotationMenu {
-    pub fn new() -> Self {
+    pub fn new(pos: Vec2, size: Vec2) -> Self {
         let employees = load_employees();
         let available_employees = update_available_employees(&employees);
-        Self { employees, available_employees }
+        Self { pos, size, employees, available_employees }
     }
     
     pub fn update_available_employees(&mut self) {
         self.available_employees = update_available_employees(&self.employees);
     }
 
-    pub fn menu(&self, font: &Font, mouse_pos: (f32, f32)) -> Option<Employee> {
+    pub fn menu(&self, font: &Font, mouse_pos: (f32, f32)) -> Option<Vec<Employee>> {
+        draw_rectangle(self.pos.x, self.pos.y, self.size.x, self.size.y, BLACK);
+        draw_rectangle_lines(self.pos.x, self.pos.y, self.size.x, self.size.y, 5.0, BLACK);
+
         for (i, employee) in self.available_employees.iter().enumerate().rev() {
             let font_size = 24;
             
@@ -54,8 +60,8 @@ impl EmployeesRotationMenu {
     
             let w = text_dimension.width + indent * 2.0;
             let h = font_size as f32 + indent * 2.0;
-            let x = 20.0;
-            let y = 20.0 + (h + 20.0) * i as f32;
+            let x = self.pos.x + indent;
+            let y = self.pos.y + indent + (h + indent * 2.0) * i as f32;
             
             if mouse_pos.0 >= x && mouse_pos.0 <= x + w && mouse_pos.1 >= y && mouse_pos.1 <= y + h {
                 let menu_text_dimension = measure_text(format!("{}, {} лет", employee.name, employee.age),
