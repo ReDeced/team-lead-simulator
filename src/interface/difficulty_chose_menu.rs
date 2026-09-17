@@ -39,7 +39,7 @@ impl DifficultyChooseMenu {
             let w = w - indent * 2.0;
             let h = (h - indent * 2.0) / Difficulty::COUNT as f32;
             let x = x + indent;
-            let y = y + indent + w * i as f32;
+            let y = y + indent + h * i as f32;
 
             let text_surface = measure_text(difficulty.to_string(), Some(font), font_size, 1.0);
 
