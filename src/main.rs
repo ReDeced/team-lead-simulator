@@ -3,7 +3,7 @@ use macroquad::prelude::*;
 mod types;
 mod interface;
 
-use crate::{interface::employees_rotation_menu::EmployeesRotationMenu, types::{Difficulty, Game}};
+use crate::{interface::game_start_menu::GameStartMenu, types::{Difficulty, Game}};
 
 
 #[macroquad::main("cocal")]
@@ -20,16 +20,12 @@ async fn main() {
 
     let screen_size = Vec2::new(screen_w, screen_h);
 
-    let employees_rotation_menu = EmployeesRotationMenu::new(Vec2::ZERO, screen_size);
+    let mut game_start_menu = GameStartMenu::new(screen_size / 5.0, screen_size / 5.0 * 3.0, Difficulty::Hard);
 
     loop {
         clear_background(DARKGRAY);
-       
-        let chosen_employee = employees_rotation_menu.draw(&font);
-
-        if chosen_employee.is_some() {
-            
-        }
+        
+        game_start_menu.draw(&font);
         
         next_frame().await;
     }
