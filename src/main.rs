@@ -1,4 +1,4 @@
-use macroquad::{prelude::*};
+use macroquad::prelude::*;
 
 mod types;
 mod interface;
@@ -15,7 +15,12 @@ async fn main() {
     
     let game = Game::new(Difficulty::Tutorial);
     
-    let employees_rotation_menu = EmployeesRotationMenu::new();
+    let screen_w = screen_width();
+    let screen_h = screen_height();
+
+    let screen_size = Vec2::new(screen_w, screen_h);
+
+    let employees_rotation_menu = EmployeesRotationMenu::new(Vec2::ZERO, screen_size);
 
     loop {
         clear_background(DARKGRAY);
