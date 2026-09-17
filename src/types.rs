@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use strum::{Display, EnumCount, EnumIter, };
 
 
 #[derive(Serialize, PartialEq, Deserialize, Debug, Clone, Copy)]
@@ -55,7 +56,7 @@ pub enum Grade {
 }
 
 
-#[derive(PartialEq, Serialize, Deserialize, Debug, Clone, Copy, strum::EnumIter)]
+#[derive(PartialEq, Serialize, Deserialize, Debug, Clone, Copy, EnumIter)]
 pub enum Position {
     Backend,
     Frontend,
@@ -92,12 +93,21 @@ pub struct ManagedEmployee {
 }
 
 
-#[derive(Serialize, Deserialize, Debug, Clone, Copy)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, PartialOrd, EnumIter, EnumCount, Display)]
 pub enum Difficulty {
+    #[strum(to_string = "Обучение")]
     Tutorial,
+
+    #[strum(to_string = "Легко")]
     Easy,
+
+    #[strum(to_string = "Нормально")]
     Normal,
+
+    #[strum(to_string = "Сложно")]
     Hard,
+
+    #[strum(to_string = "Экстрим")]
     Extreme
 }
 
