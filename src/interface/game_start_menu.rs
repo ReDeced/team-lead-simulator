@@ -66,18 +66,18 @@ impl GameStartMenu {
         draw_rectangle_lines(button_1.x, button_1.y, button_1.w, button_1.h, 5.0, WHITE);
 
         draw_text_ex(self.chosen_difficulty.to_string(),
-        button_1.x + (button_1.w - text_surface_1.width) / 2.0,
-        button_1.y + button_1.h / 2.0,
-        TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: WHITE }
+            button_1.x + (button_1.w - text_surface_1.width) / 2.0,
+            button_1.y + (button_1.h + text_surface_1.height) / 2.0,
+            TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: WHITE }
         );
 
         draw_rectangle(button_2.x, button_2.y, button_2.w, button_2.h, BLACK);
         draw_rectangle_lines(button_2.x, button_2.y, button_2.w, button_2.h, 5.0, WHITE);
         
         draw_text_ex("Выбрать начальную команду",
-        button_2.x + (button_2.w - text_surface_2.width) / 2.0,
-        button_2.y + button_2.h / 2.0,
-        TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: WHITE }
+            button_2.x + (button_2.w - text_surface_2.width) / 2.0,
+            button_2.y + (button_2.h + text_surface_2.height) / 2.0,
+            TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: WHITE }
         );
         
         if self.state == GameStartMenuState::None {
