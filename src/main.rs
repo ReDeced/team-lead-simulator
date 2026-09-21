@@ -20,7 +20,7 @@ async fn main() {
 
     let screen_size = Vec2::new(screen_w, screen_h);
 
-    let employees_rotation_menu = EmployeesRotationMenu::new(Vec2::ZERO, screen_size);
+    let mut employees_rotation_menu = EmployeesRotationMenu::new(Vec2::ZERO, screen_size);
 
     loop {
         clear_background(DARKGRAY);
