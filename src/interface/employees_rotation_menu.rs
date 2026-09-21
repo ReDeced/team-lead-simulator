@@ -51,39 +51,83 @@ impl EmployeesRotationMenu {
 
     pub fn draw(&self, font: &Font) -> Option<Vec<Employee>> {
         draw_rectangle(self.pos.x, self.pos.y, self.size.x, self.size.y, BLACK);
-        draw_rectangle_lines(self.pos.x, self.pos.y, self.size.x, self.size.y, 5.0, BLACK);
+        draw_rectangle_lines(self.pos.x, self.pos.y, self.size.x, self.size.y, 5.0, WHITE);
 
-        for (i, employee) in self.available_employees.iter().enumerate().rev() {
-            let font_size = 24;
-            
-            let text_dimension = measure_text(format!("{:?} {:?}", employee.grade, employee.position),
-            Some(font), font_size, 1.0);
-            
-            let mouse_pos = mouse_position();
-
-            let indent = 10.0;
+        let font_size = 24;
+        let indent = 10.0;
+        let h = font_size as f32 + indent * 2.0;
+        let slot_height = h + indent;
+        
+        // 1. Вычисляем, сколько строк помещается в одну колонку
+        let max_rows_per_column = (self.size.y / slot_height).floor() as usize;
+        let max_rows_per_column = max_rows_per_column.max(1); 
+        
+        let total_items = self.available_employees.len();
+        let total_columns = (total_items + max_rows_per_column - 1) / max_rows_per_column;
     
+        // Массив для хранения максимальной ширины карточек для каждой колонки
+        let mut column_widths = vec![0.0f32; total_columns];
+    
+        // --- ПЕРВЫЙ ПРОХОД: Вычисляем максимальную ширину каждой колонки ---
+        for (i, employee) in self.available_employees.iter().enumerate() {
+            let text_dimension = measure_text(
+                &format!("{:?} {:?}", employee.grade, employee.position),
+                Some(font),
+                font_size,
+                1.0,
+            );
             let w = text_dimension.width + indent * 2.0;
-            let h = font_size as f32 + indent * 2.0;
-            let x = self.pos.x + indent;
-            let y = self.pos.y + indent + (h + indent * 2.0) * i as f32;
+            let col_idx = i / max_rows_per_column;
             
+            if col_idx < column_widths.len() {
+                column_widths[col_idx] = column_widths[col_idx].max(w);
+            }
+        }
+    
+        let mouse_pos = mouse_position();
+        let mut clicked_employee: Option<Employee> = None;
+    
+        // --- ВТОРОЙ ПРОХОД: Отрисовка и проверка взаимодействий ---
+        for (i, employee) in self.available_employees.iter().enumerate().rev() {
+            let text_dimension = measure_text(
+                &format!("{:?} {:?}", employee.grade, employee.position),
+                Some(font),
+                font_size,
+                1.0,
+            );
+            
+            let col_idx = i / max_rows_per_column;
+            let row_idx = i % max_rows_per_column;
+            
+            // Ширина текущей карточки и максимальная ширина её колонки
+            let max_col_width = column_widths[col_idx];
+            let w = max_col_width;
+    
+            // Считаем X: суммируем максимальные ширины всех предыдущих колонок
+            let mut previous_columns_width = 0.0;
+            for c in 0..col_idx {
+                previous_columns_width += column_widths[c] + indent;
+            }
+        
+            let x = self.pos.x + indent + previous_columns_width;
+            let y = self.pos.y + indent + (row_idx as f32 * slot_height);
+
             // TODO: строка 35
             if mouse_pos.0 >= x && mouse_pos.0 <= x + w && mouse_pos.1 >= y && mouse_pos.1 <= y + h {
                 let menu_text_dimension = measure_text(format!("{}, {} лет", employee.name, employee.age),
                 Some(font), font_size, 1.0);
     
                 let menu_w = menu_text_dimension.width + indent * 2.0;
-                let menu_h = h - indent;
+                let menu_h = h * 2.0 - indent;
                 let menu_x = x;
                 let menu_y = y + h;
     
                 draw_rectangle(x, y, w.max(menu_w), h + menu_h, BLACK);
                 draw_rectangle_lines(x, y, w.max(menu_w), h + menu_h, 5.0, WHITE);
-                draw_text_ex(format!("{}, {} лет", employee.name, employee.age),
-                menu_x + indent, menu_y + menu_h / 2.0,
+                draw_multiline_text_ex(format!("{}, {} лет\n{}р/мес.", employee.name, employee.age, employee.salary),
+                menu_x + indent, menu_y + menu_h / 2.0, Some(1.0),
                 TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: WHITE });
-                
+
                 // TODO: при нажатии добавить в список выбранных сотрудников
 
             } else {
