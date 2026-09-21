@@ -59,7 +59,7 @@ impl EmployeesRotationMenu {
         let slot_height = h + indent;
         
         // 1. Вычисляем, сколько строк помещается в одну колонку
-        let max_rows_per_column = (self.size.y / slot_height).floor() as usize;
+        let max_rows_per_column = (self.size.y / slot_height).floor() as usize - 1;
         let max_rows_per_column = max_rows_per_column.max(1); 
         
         let total_items = self.available_employees.len();
@@ -85,7 +85,6 @@ impl EmployeesRotationMenu {
         }
     
         let mouse_pos = mouse_position();
-        let mut clicked_employee: Option<Employee> = None;
     
         // --- ВТОРОЙ ПРОХОД: Отрисовка и проверка взаимодействий ---
         for (i, employee) in self.available_employees.iter().enumerate().rev() {
