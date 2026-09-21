@@ -1,4 +1,4 @@
-use macroquad::{color::*, input::mouse_position, math::Vec2, rand::ChooseRandom, shapes::{draw_rectangle, draw_rectangle_lines}, text::*};
+use macroquad::{color::*, input::{MouseButton::Left, is_mouse_button_pressed, mouse_position}, math::Vec2, rand::ChooseRandom, shapes::{draw_rectangle, draw_rectangle_lines}, text::*};
 use strum::IntoEnumIterator;
 
 use crate::types::{Employee, Position, load_employees};
@@ -30,8 +30,8 @@ pub struct EmployeesRotationMenu {
     pos: Vec2,
     size: Vec2,
 
-    employees: Vec<Employee>,
     available_employees: Vec<Employee>,
+    chosen_employees: Vec<bool>,
     
     // TODO: сделать, чтобы карточка сотрудника закрывалась, если выйти за её пределы
     // opened_employee_card_index: usize
@@ -42,14 +42,21 @@ impl EmployeesRotationMenu {
     pub fn new(pos: Vec2, size: Vec2) -> Self {
         let employees = load_employees();
         let available_employees = update_available_employees(&employees);
-        Self { pos, size, employees, available_employees }
+        
+        let mut chosen_employees = Vec::new();
+
+        for _ in available_employees.iter() {
+            chosen_employees.push(false);
+        }
+
+        Self { pos, size, available_employees, chosen_employees: chosen_employees }
     }
     
     pub fn update_available_employees(&mut self) {
-        self.available_employees = update_available_employees(&self.employees);
+        self.available_employees = update_available_employees(&load_employees());
     }
 
-    pub fn draw(&self, font: &Font) -> Option<Vec<Employee>> {
+    pub fn draw(&mut self, font: &Font) -> Option<Vec<Employee>> {
         draw_rectangle(self.pos.x, self.pos.y, self.size.x, self.size.y, BLACK);
         draw_rectangle_lines(self.pos.x, self.pos.y, self.size.x, self.size.y, 5.0, WHITE);
 
@@ -59,7 +66,7 @@ impl EmployeesRotationMenu {
         let slot_height = h + indent;
         
         // 1. Вычисляем, сколько строк помещается в одну колонку
-        let max_rows_per_column = (self.size.y / slot_height).floor() as usize - 1;
+        let max_rows_per_column = (self.size.y / slot_height).floor() as usize - 2;
         let max_rows_per_column = max_rows_per_column.max(1); 
         
         let total_items = self.available_employees.len();
@@ -110,6 +117,14 @@ impl EmployeesRotationMenu {
         
             let x = self.pos.x + indent + previous_columns_width;
             let y = self.pos.y + indent + (row_idx as f32 * slot_height);
+            
+            let mut card_color = BLACK;
+            let mut text_color = WHITE;
+
+            if self.chosen_employees[i] {
+                card_color = DARKGRAY;
+                text_color = WHITE;
+            }
 
             // TODO: строка 35
             if mouse_pos.0 >= x && mouse_pos.0 <= x + w && mouse_pos.1 >= y && mouse_pos.1 <= y + h {
@@ -120,23 +135,25 @@ impl EmployeesRotationMenu {
                 let menu_h = h * 2.0 - indent;
                 let menu_x = x;
                 let menu_y = y + h;
-    
-                draw_rectangle(x, y, w.max(menu_w), h + menu_h, BLACK);
-                draw_rectangle_lines(x, y, w.max(menu_w), h + menu_h, 5.0, WHITE);
+
+                draw_rectangle(x, y, w.max(menu_w), h + menu_h, card_color);
+                draw_rectangle_lines(x, y, w.max(menu_w), h + menu_h, 5.0, text_color);
                 draw_multiline_text_ex(format!("{}, {} лет\n{}р/мес.", employee.name, employee.age, employee.salary),
                 menu_x + indent, menu_y + menu_h / 2.0, Some(1.0),
-                TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: WHITE });
+                TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: text_color });
 
-                // TODO: при нажатии добавить в список выбранных сотрудников
+                if is_mouse_button_pressed(Left) {
+                    self.chosen_employees[i] = !self.chosen_employees[i];
+                }
 
             } else {
-                draw_rectangle(x, y, w, h, BLACK);
-                draw_rectangle_lines(x, y, w, h, 5.0, WHITE);
+                draw_rectangle(x, y, w, h, card_color);
+                draw_rectangle_lines(x, y, w, h, 5.0, text_color);
             }
     
             draw_text_ex(format!("{:?} {:?}", employee.grade, employee.position),
             x + indent, y + h / 2.0 + indent,
-            TextParams { font: Some(&font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: WHITE });
+            TextParams { font: Some(&font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: text_color });
 
             // TODO: сделать кнопку окончания выбора
         }
