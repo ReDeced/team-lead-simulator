@@ -250,10 +250,14 @@ impl Game {
 }
 
 
-pub fn load_employees() -> Vec<Employee> {
-    const BYNARY_DATA: &[u8] = include_bytes!("../game-data/employees.mpk");
-    let employees: Vec<Employee> = rmp_serde::from_slice(BYNARY_DATA)
+pub fn load_employees(exclude_positions: Vec<Position>) -> Vec<Employee> {
+    const BINARY_DATA: &[u8] = include_bytes!("../game-data/employees.mpk");
+    let mut employees: Vec<Employee> = rmp_serde::from_slice(BINARY_DATA)
         .expect("Не удалось распарсить employees.mpk");
+    
+    // Оставляем только тех сотрудников, чьей позиции НЕТ в списке исключений
+    employees.retain(|employee| !exclude_positions.contains(&employee.position));
 
     employees
 }
+

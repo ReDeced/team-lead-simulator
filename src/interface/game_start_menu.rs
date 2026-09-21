@@ -1,6 +1,6 @@
-use macroquad::{color::{BLACK, WHITE}, input::{MouseButton, is_mouse_button_pressed, mouse_position}, math::{Rect, Vec2, Vec4}, miniquad::TextureParams, shapes::{draw_rectangle, draw_rectangle_lines}, text::{Font, TextParams, draw_text_ex, measure_text}};
+use macroquad::{color::{BLACK, WHITE}, input::{MouseButton, is_mouse_button_pressed, mouse_position}, math::{Rect, Vec2}, shapes::{draw_rectangle, draw_rectangle_lines}, text::{Font, TextParams, draw_text_ex, measure_text}};
 
-use crate::{interface::{difficulty_chose_menu::DifficultyChooseMenu, employees_rotation_menu::EmployeesRotationMenu}, types::{Difficulty, Employee}};
+use crate::{interface::{difficulty_chose_menu::DifficultyChooseMenu, employees_rotation_menu::EmployeesRotationMenu}, types::{Difficulty, Employee, Position}};
 
 
 #[derive(PartialEq)]
@@ -26,7 +26,8 @@ pub struct GameStartMenu {
 
 impl GameStartMenu {
     pub fn new(pos: Vec2, size: Vec2, max_difficulty: Difficulty) -> Self {
-        let employees_rotation_menu = EmployeesRotationMenu::new(pos + size / 5.0, size / 5.0 * 3.0);
+        let employees_rotation_menu = EmployeesRotationMenu::new(pos, size,
+            vec![Position::ManualQA, Position::AutoQA, Position::Sysadmin, Position::DevOps]);
         let difficulty_chose_menu = DifficultyChooseMenu::new(
             pos + size / 5.0, size / 5.0 * 3.0, max_difficulty);
         Self { pos, size, state: GameStartMenuState::None, chosen_employees: Vec::new(),
@@ -106,6 +107,8 @@ impl GameStartMenu {
                 self.state = GameStartMenuState::None;
             }
         }
+        
+        // TODO: сделать кнопку начала игры
 
         None
     }

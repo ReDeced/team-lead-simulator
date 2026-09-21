@@ -4,13 +4,13 @@ use strum::IntoEnumIterator;
 use crate::types::{Employee, Position, load_employees};
 
 
-fn update_available_employees(employees: &Vec<Employee>) -> Vec<Employee> {
+fn update_available_employees(employees: &Vec<Employee>, exclude_positions: Vec<Position>) -> Vec<Employee> {
     let time_seed = (macroquad::time::get_time() * 1000000.0) as u64; 
     macroquad::rand::srand(time_seed);
 
     let mut available_employees: Vec<Employee> = Vec::new();
 
-    for position in Position::iter() {
+    for position in Position::iter().filter(|pos | !exclude_positions.contains(pos) ) {
         let filtered_employees: Vec<&Employee> = employees.iter()
             .filter(|dev| dev.position == position).collect();
 
@@ -39,9 +39,9 @@ pub struct EmployeesRotationMenu {
 
 
 impl EmployeesRotationMenu {
-    pub fn new(pos: Vec2, size: Vec2) -> Self {
-        let employees = load_employees();
-        let available_employees = update_available_employees(&employees);
+    pub fn new(pos: Vec2, size: Vec2, exclude_positions: Vec<Position>) -> Self {
+        let employees = load_employees(exclude_positions.clone());
+        let available_employees = update_available_employees(&employees, exclude_positions);
         
         let mut chosen_employees = Vec::new();
 
@@ -52,40 +52,30 @@ impl EmployeesRotationMenu {
         Self { pos, size, available_employees, chosen_employees: chosen_employees }
     }
     
-    pub fn update_available_employees(&mut self) {
-        self.available_employees = update_available_employees(&load_employees());
-    }
-
     pub fn draw(&mut self, font: &Font) -> Option<Vec<Employee>> {
         draw_rectangle(self.pos.x, self.pos.y, self.size.x, self.size.y, BLACK);
         draw_rectangle_lines(self.pos.x, self.pos.y, self.size.x, self.size.y, 5.0, WHITE);
-
+    
         let font_size = 24;
         let indent = 10.0;
         let h = font_size as f32 + indent * 2.0;
         let slot_height = h + indent;
-        
-        // 1. Вычисляем, сколько строк помещается в одну колонку
+    
         let max_rows_per_column = (self.size.y / slot_height).floor() as usize - 2;
-        let max_rows_per_column = max_rows_per_column.max(1); 
-        
+        let max_rows_per_column = max_rows_per_column.max(1);
+    
         let total_items = self.available_employees.len();
         let total_columns = (total_items + max_rows_per_column - 1) / max_rows_per_column;
     
-        // Массив для хранения максимальной ширины карточек для каждой колонки
         let mut column_widths = vec![0.0f32; total_columns];
     
-        // --- ПЕРВЫЙ ПРОХОД: Вычисляем максимальную ширину каждой колонки ---
         for (i, employee) in self.available_employees.iter().enumerate() {
             let text_dimension = measure_text(
                 &format!("{:?} {:?}", employee.grade, employee.position),
-                Some(font),
-                font_size,
-                1.0,
+                Some(font), font_size, 1.0,
             );
             let w = text_dimension.width + indent * 2.0;
             let col_idx = i / max_rows_per_column;
-            
             if col_idx < column_widths.len() {
                 column_widths[col_idx] = column_widths[col_idx].max(w);
             }
