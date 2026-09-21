@@ -1,4 +1,4 @@
-use macroquad::{color::*, input::{MouseButton::Left, is_mouse_button_pressed, mouse_position}, math::Vec2, rand::ChooseRandom, shapes::{draw_rectangle, draw_rectangle_lines}, text::*};
+use macroquad::{color::*, input::{MouseButton::Left, is_mouse_button_pressed, mouse_position}, math::{Rect, Vec2}, rand::ChooseRandom, shapes::{draw_rectangle, draw_rectangle_lines}, text::*};
 use strum::IntoEnumIterator;
 
 use crate::types::{Employee, Position, load_employees};
@@ -154,8 +154,32 @@ impl EmployeesRotationMenu {
             draw_text_ex(format!("{:?} {:?}", employee.grade, employee.position),
             x + indent, y + h / 2.0 + indent,
             TextParams { font: Some(&font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: text_color });
+            
+            let chose_button_text_dimension = measure_text("Выбрать сортудников", Some(font), font_size, 1.0);
 
-            // TODO: сделать кнопку окончания выбора
+            let chose_button = Rect::new( indent, self.size.y - slot_height, self.size.x - indent * 2.0, h);
+            let mut chose_button_color = BLACK;
+            
+            if chose_button.contains(Vec2::new(mouse_pos.0, mouse_pos.1)) {
+                chose_button_color = DARKGRAY;
+                if is_mouse_button_pressed(Left) {
+                    let mut chosen_employees: Vec<Employee> = Vec::new();
+                    for (i, employee) in self.available_employees.iter().enumerate() {
+                        if self.chosen_employees[i] {
+                            chosen_employees.push(employee.clone());
+                        }
+                    }
+                    return Some(chosen_employees);
+                }
+            }
+
+            draw_rectangle(chose_button.x, chose_button.y, chose_button.w, chose_button.h, chose_button_color);
+            draw_rectangle_lines(chose_button.x, chose_button.y, chose_button.w, chose_button.h, 5.0, WHITE);
+
+            draw_text_ex("Выбрать сотрудников",
+                chose_button.x + (chose_button.w - chose_button_text_dimension.width) / 2.0,
+                chose_button.y + chose_button_text_dimension.height / 2.0 + chose_button.h / 2.0,
+                TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: WHITE });
         }
         None
     }
