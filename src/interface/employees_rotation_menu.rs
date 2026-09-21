@@ -93,94 +93,96 @@ impl EmployeesRotationMenu {
     
         let mouse_pos = mouse_position();
     
-        // --- ВТОРОЙ ПРОХОД: Отрисовка и проверка взаимодействий ---
         for (i, employee) in self.available_employees.iter().enumerate().rev() {
             let text_dimension = measure_text(
                 &format!("{:?} {:?}", employee.grade, employee.position),
-                Some(font),
-                font_size,
-                1.0,
+                Some(font), font_size, 1.0,
             );
-            
+    
             let col_idx = i / max_rows_per_column;
             let row_idx = i % max_rows_per_column;
-            
-            // Ширина текущей карточки и максимальная ширина её колонки
+    
             let max_col_width = column_widths[col_idx];
             let w = max_col_width;
     
-            // Считаем X: суммируем максимальные ширины всех предыдущих колонок
             let mut previous_columns_width = 0.0;
             for c in 0..col_idx {
                 previous_columns_width += column_widths[c] + indent;
             }
-        
+    
             let x = self.pos.x + indent + previous_columns_width;
             let y = self.pos.y + indent + (row_idx as f32 * slot_height);
-            
+    
             let mut card_color = BLACK;
             let mut text_color = WHITE;
-
+    
             if self.chosen_employees[i] {
                 card_color = DARKGRAY;
                 text_color = WHITE;
             }
-
-            // TODO: строка 35
+    
             if mouse_pos.0 >= x && mouse_pos.0 <= x + w && mouse_pos.1 >= y && mouse_pos.1 <= y + h {
-                let menu_text_dimension = measure_text(format!("{}, {} лет", employee.name, employee.age),
-                Some(font), font_size, 1.0);
+                let menu_text_dimension = measure_text(
+                    &format!("{}, {} лет", employee.name, employee.age),
+                    Some(font), font_size, 1.0,
+                );
     
                 let menu_w = menu_text_dimension.width + indent * 2.0;
                 let menu_h = h * 2.0 - indent;
                 let menu_x = x;
                 let menu_y = y + h;
-
+    
                 draw_rectangle(x, y, w.max(menu_w), h + menu_h, card_color);
                 draw_rectangle_lines(x, y, w.max(menu_w), h + menu_h, 5.0, text_color);
-                draw_multiline_text_ex(format!("{}, {} лет\n{}р/мес.", employee.name, employee.age, employee.salary),
-                menu_x + indent, menu_y + menu_h / 2.0, Some(1.0),
-                TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: text_color });
-
+                draw_multiline_text_ex(
+                    &format!("{}, {} лет\n{}р/мес.", employee.name, employee.age, employee.salary),
+                    menu_x + indent, menu_y + menu_h / 2.0, Some(1.0),
+                    TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: text_color },
+                );
+    
                 if is_mouse_button_pressed(Left) {
                     self.chosen_employees[i] = !self.chosen_employees[i];
                 }
-
             } else {
                 draw_rectangle(x, y, w, h, card_color);
                 draw_rectangle_lines(x, y, w, h, 5.0, text_color);
             }
     
-            draw_text_ex(format!("{:?} {:?}", employee.grade, employee.position),
-            x + indent, y + h / 2.0 + indent,
-            TextParams { font: Some(&font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: text_color });
-            
-            let chose_button_text_dimension = measure_text("Выбрать сортудников", Some(font), font_size, 1.0);
-
-            let chose_button = Rect::new( indent, self.size.y - slot_height, self.size.x - indent * 2.0, h);
-            let mut chose_button_color = BLACK;
-            
-            if chose_button.contains(Vec2::new(mouse_pos.0, mouse_pos.1)) {
-                chose_button_color = DARKGRAY;
-                if is_mouse_button_pressed(Left) {
-                    let mut chosen_employees: Vec<Employee> = Vec::new();
-                    for (i, employee) in self.available_employees.iter().enumerate() {
-                        if self.chosen_employees[i] {
-                            chosen_employees.push(employee.clone());
-                        }
-                    }
-                    return Some(chosen_employees);
-                }
-            }
-
-            draw_rectangle(chose_button.x, chose_button.y, chose_button.w, chose_button.h, chose_button_color);
-            draw_rectangle_lines(chose_button.x, chose_button.y, chose_button.w, chose_button.h, 5.0, WHITE);
-
-            draw_text_ex("Выбрать сотрудников",
-                chose_button.x + (chose_button.w - chose_button_text_dimension.width) / 2.0,
-                chose_button.y + chose_button_text_dimension.height / 2.0 + chose_button.h / 2.0,
-                TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: WHITE });
+            draw_text_ex(
+                &format!("{:?} {:?}", employee.grade, employee.position),
+                x + indent, y + h / 2.0 + indent,
+                TextParams { font: Some(&font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: text_color },
+            );
         }
+    
+        // --- Кнопка теперь рисуется и обрабатывается ОДИН раз, поверх всех карточек ---
+        let chose_button_text_dimension = measure_text("Выбрать сотрудников", Some(font), font_size, 1.0);
+        let chose_button = Rect::new(self.pos.x + indent, self.pos.y + self.size.y - slot_height, self.size.x - indent * 2.0, h);
+        let mut chose_button_color = BLACK;
+    
+        if chose_button.contains(Vec2::new(mouse_pos.0, mouse_pos.1)) {
+            chose_button_color = DARKGRAY;
+            if is_mouse_button_pressed(Left) {
+                let mut chosen_employees: Vec<Employee> = Vec::new();
+                for (i, employee) in self.available_employees.iter().enumerate() {
+                    if self.chosen_employees[i] {
+                        chosen_employees.push(employee.clone());
+                    }
+                }
+                return Some(chosen_employees);
+            }
+        }
+    
+        draw_rectangle(chose_button.x, chose_button.y, chose_button.w, chose_button.h, chose_button_color);
+        draw_rectangle_lines(chose_button.x, chose_button.y, chose_button.w, chose_button.h, 5.0, WHITE);
+    
+        draw_text_ex(
+            "Выбрать сотрудников",
+            chose_button.x + (chose_button.w - chose_button_text_dimension.width) / 2.0,
+            chose_button.y + chose_button_text_dimension.height / 2.0 + chose_button.h / 2.0,
+            TextParams { font: Some(font), font_size, font_scale: 1.0, font_scale_aspect: 1.0, rotation: 0.0, color: WHITE },
+        );
+    
         None
     }
 }
